@@ -6,32 +6,33 @@
 # -----------------------------------------------
 # Blizz ly (display manager) nix theme by lPhiNix
 #
-{...}: let
-  # VGA/PuTTY default 16-color palette, with bright-black (#8) darkened
-  # from 555555 to 1a1a1a. The VT kernel collapses dark neutrals to
-  # bright-black, so this is what makes the colormix animation read
-  # near-black on the VT instead of the default gray.
-  vgaPalette = [
-    "000000"
-    "aa0000"
-    "00aa00"
-    "aa5500"
-    "0000aa"
-    "aa00aa"
-    "00aaaa"
-    "aaaaaa"
-    "1a1a1a"
-    "ff5555"
-    "55ff55"
-    "ffff55"
-    "5555ff"
-    "ff55ff"
-    "55ffff"
-    "ffffff"
-  ];
+{pkgs, ...}: let
+  # Inverted (complemented) palette, applied to tty1 only when ly starts.
+  # On the Linux VT the kernel quantizes ly's colors to palette indices, so
+  # keeping noir's ly colors and flipping the palette yields the full
+  # inversion (white background, black text) without touching the boot.
+  lyPalette = pkgs.writeText "ly-blizz-palette" ''
+    #ffffff
+    #55ffff
+    #ff55ff
+    #55aaff
+    #ffff55
+    #55ff55
+    #ff5555
+    #555555
+    #e5e5e5
+    #00aaaa
+    #aa00aa
+    #0000aa
+    #aaaaaa
+    #00aa00
+    #aa0000
+    #000000
+  '';
 in {
   services.displayManager.ly.settings = {
-    # Palette
+    # Same as noir: the kernel maps these to palette indices and lyPalette
+    # inverts them at startup.
     bg = "0x000a0f0f";
     fg = "0x00dce8e6";
     border_fg = "0x009bd0cc";
@@ -55,17 +56,16 @@ in {
     # Input
     clear_password = true;
 
-    # Colormix animation: the VT kernel collapses dark neutrals to
-    # bright-black (palette #8, darkened above), so col1 is true black
-    # and col2/col3 near-black.
+    # Colormix animation (noir); the inverted palette makes it read light.
     animation = "colormix";
     cmatrix_fg = "0x006d7876";
     cmatrix_head_col = "0x00a2adac";
     colormix_col1 = "0x20000000";
     colormix_col2 = "0x00010101";
     colormix_col3 = "0x00020202";
-  };
 
-  # Apply the palette above to the virtual console.
-  console.colors = vgaPalette;
+    # Switch tty1 to the inverted palette right before ly draws, so the
+    # inversion applies to ly only and the boot console is left untouched.
+    start_cmd = "${pkgs.kbd}/bin/setvtrgb -C /dev/tty1 ${lyPalette}";
+  };
 }
