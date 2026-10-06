@@ -27,7 +27,6 @@ in {
     tty-clock # Terminal clock
     cbonsai # Growing bonsai tree
     pipes # Pipes terminal screensaver
-    sl # Steam locomotive runs on 'sl'
     hollywood # Fake 'hacker' console activity
   ];
 
