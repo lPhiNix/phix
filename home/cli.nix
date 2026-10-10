@@ -28,6 +28,7 @@
 
     tealdeer # Fast tldr client (simplified man pages)
 
+    filen-cli # Filen cloud CLI (encrypted drive)
     yubikey-manager # YubiKey device manager (ykman)
     pcsc-tools # PC/SC smart card diagnostics (pcsc_scan)
   ];

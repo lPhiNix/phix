@@ -20,11 +20,13 @@
     pkgs.unstablePkgs.tor-browser # Tor Browser (anonymity)
     pkgs.unstablePkgs.vscode # Code editor (GUI IDE)
     obsidian # Markdown vault
+    filen-desktop # Filen cloud desktop app (encrypted drive)
     obs-studio # Screen recording and streaming
     pkgs.unstablePkgs.lmstudio # Local LLM desktop app
     quickemu # Quick VMs (quickget/quickemu CLI) (Need GUI)
 
     libnotify # Desktop notifications
+    libsecret # Secret Service client
     wl-clipboard # Wayland clipboard
     cliphist # Clipboard history
     hyprpicker # Screen color picker
