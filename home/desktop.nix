@@ -24,6 +24,7 @@
     obs-studio # Screen recording and streaming
     pkgs.unstablePkgs.lmstudio # Local LLM desktop app
     quickemu # Quick VMs (quickget/quickemu CLI) (Need GUI)
+    spice-gtk # VM viewer (SPICE client, spicy)
 
     libnotify # Desktop notifications
     libsecret # Secret Service client
