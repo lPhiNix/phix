@@ -22,6 +22,7 @@
     obsidian # Markdown vault
     filen-desktop # Filen cloud desktop app (encrypted drive)
     obs-studio # Screen recording and streaming
+    gimp # Image editing (raster/photo)
     pkgs.unstablePkgs.lmstudio # Local LLM desktop app
     quickemu # Quick VMs (quickget/quickemu CLI) (Need GUI)
     spice-gtk # VM viewer (SPICE client, spicy)
