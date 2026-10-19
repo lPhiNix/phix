@@ -24,6 +24,7 @@
     obs-studio # Screen recording and streaming
     gimp # Image editing (raster/photo)
     inkscape # Vector illustration / SVG
+    kdePackages.kdenlive # Video editing (MP4/H.264/AAC, NVENC)
     pkgs.unstablePkgs.lmstudio # Local LLM desktop app
     quickemu # Quick VMs (quickget/quickemu CLI) (Need GUI)
     spice-gtk # VM viewer (SPICE client, spicy)
