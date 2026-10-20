@@ -11,31 +11,32 @@
   # On the Linux VT the kernel quantizes ly's colors to palette indices, so
   # keeping noir's ly colors and flipping the palette yields the full
   # inversion (white background, black text) without touching the boot.
-  lyPalette = pkgs.writeText "ly-blizz-palette" ''
-    #ffffff
-    #55ffff
-    #ff55ff
-    #55aaff
-    #ffff55
-    #55ff55
-    #ff5555
-    #555555
-    #e5e5e5
-    #00aaaa
-    #aa00aa
-    #0000aa
-    #aaaaaa
-    #00aa00
-    #aa0000
+  lightPalette = pkgs.writeText "ly-blizz-light-palette" ''
     #000000
+    #aa0000
+    #00aa00
+    #aa5500
+    #0000aa
+    #fafafa
+    #00aaaa
+    #ffffff
+    #555555
+    #ff5555
+    #55ff55
+    #ffff55
+    #5555ff
+    #d0d0d0
+    #55ffff
+    #ffffff
   '';
 in {
   services.displayManager.ly.settings = {
-    # Same as noir: the kernel maps these to palette indices and lyPalette
-    # inverts them at startup.
-    bg = "0x000a0f0f";
-    fg = "0x00dce8e6";
-    border_fg = "0x009bd0cc";
+    # Light theme: truecolor white maps to palette index 7 (pure white above),
+    # black text uses the black palette index.
+    bg = "0x00ffffff";
+    fg = "0x20000000";
+    border_fg = "0x20000000";
+    error_bg = "0x00ffffff";
     error_fg = "0x01fa746f";
 
     # Card
@@ -58,14 +59,14 @@ in {
 
     # Colormix animation (noir); the inverted palette makes it read light.
     animation = "colormix";
-    cmatrix_fg = "0x006d7876";
-    cmatrix_head_col = "0x00a2adac";
-    colormix_col1 = "0x20000000";
-    colormix_col2 = "0x00010101";
-    colormix_col3 = "0x00020202";
+    cmatrix_fg = "0x20000000";
+    cmatrix_head_col = "0x20000000";
+    colormix_col1 = "0x00ff00ff";
+    colormix_col2 = "0x00ff30ff";
+    colormix_col3 = "0x00ff60ff";
 
     # Switch tty1 to the inverted palette right before ly draws, so the
     # inversion applies to ly only and the boot console is left untouched.
-    start_cmd = "${pkgs.kbd}/bin/setvtrgb -C /dev/tty1 ${lyPalette}";
+    start_cmd = "${pkgs.kbd}/bin/setvtrgb -C /dev/tty1 ${lightPalette}";
   };
 }
