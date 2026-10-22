@@ -30,6 +30,10 @@
         mkdir -p "$XDG_DATA_HOME"
         exec ${pkgs.unstablePkgs.osu-lazer-bin}/bin/osu! "$@"
       '')
+
+      heroic # Open-source Epic Games launcher
+      dualsensectl # PS5 DualSense controller utility (battery, LEDs, triggers)
+      evtest # Input device/event diagnostics (evdev)
     ];
     # Desktop entries so the launchers show up in the app menu.
     xdg.desktopEntries."atlauncher" = {
