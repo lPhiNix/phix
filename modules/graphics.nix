@@ -40,9 +40,11 @@ in {
       hardware.graphics.extraPackages = [pkgs.intel-media-driver];
     })
 
-    # AMD GPU: use the AMDVLK Vulkan driver.
+    # AMD GPU: Mesa provides RADV (Vulkan) and radeonsi (VA-API) through
+    # hardware.graphics. No extra driver package is needed; libva-utils is
+    # only for diagnostics (vainfo).
     (lib.mkIf (config.modules.graphics.enable && gpu.provider == "amd") {
-      hardware.graphics.extraPackages = [pkgs.amdvlk];
+      environment.systemPackages = [pkgs.libva-utils];
     })
 
     # NVIDIA: open kernel module, modesetting and settings app.
