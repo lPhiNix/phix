@@ -29,6 +29,13 @@ in {
       description = "Extra groups for the primary user.";
     };
 
+    # LAN hostname used by services.
+    domain = mkOption {
+      type = types.str;
+      default = "localhost";
+      description = "LAN hostname used by services.";
+    };
+
     # Machine profiles: each profile enables sensible defaults for that kind of host.
     profiles = mkOption {
       type = types.listOf (types.enum ["laptop" "desktop" "server"]);

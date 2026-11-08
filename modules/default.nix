@@ -26,6 +26,7 @@
     ./power.nix
     ./shell.nix
     ./users.nix
+    ./services
 
     # Profiles: per-machine-type defaults for the features above.
     ./profiles/laptop.nix

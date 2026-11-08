@@ -25,6 +25,8 @@ git clone git@github.com:lPhiNix/phix.git ~/.phix
 | `make boot HOST=<h>`                     | Stage the new configuration for the next boot (kernel/initrd). |
 | `make test HOST=<h>`                     | Activate at runtime, without touching the boot entry.          |
 | `make build HOST=<h>`                    | Build the configuration without activating it.                 |
+| `make deploy HOST=<h> DEPLOY=<u>@<ip>`   | Rebuild and activate on a remote host over SSH.                |
+| `make deploy-boot HOST=<h> DEPLOY=<u>@<ip>` | Stage on a remote host for the next boot.                   |
 | `make install HOST=<h> TARGET=root@<ip>` | Install NixOS on a fresh machine (wipes the disk).             |
 | `make secrets HOST=<h>`                  | Edit the encrypted secrets of a host.                          |
 | `make fmt`                               | Format all `.nix` files.                                       |

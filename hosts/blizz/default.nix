@@ -34,6 +34,11 @@
   # Host-specific NixOS options
   time.timeZone = "Europe/Madrid";
 
+  # Sign locally built store paths so remote hosts can trust them.
+  nix.settings.secret-key-files = [
+    "/var/lib/nix-signing/phix-local.secret"
+  ];
+
   # Unlock the root LUKS (main) with the YubiKey FIDO2 token; the passphrase
   # stays enrolled as a fallback.
   boot.initrd.luks.devices."main".crypttabExtraOpts = ["fido2-device=auto" "token-timeout=5"];

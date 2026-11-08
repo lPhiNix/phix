@@ -4,18 +4,22 @@
 # /_/  /_//_/_//_\_\ /_/  /_/\_,_/_/\_\\__/_//_/_/\__/
 #
 # Makefile for phix configuration.
-# Shortcuts to switch, boot, test, build, install, format, update and check the Nix flake.
+# Shortcuts to switch, boot, test, build, deploy, install, format, update and
+# check the Nix flake.
 
 # Default host to target; falls back to the current short hostname.
 HOST ?= $(shell hostname -s)
 # Absolute path to the flake (this directory).
 FLAKE := $(CURDIR)
+# SSH destination for 'make deploy' (user@host).
+# Defaults to the primary user on HOST; e.g. make deploy HOST=frost DEPLOY=phinix@10.0.0.5
+DEPLOY ?= phinix@$(HOST)
 # SSH destination of a fresh machine for 'make install' (root@ or nixos@).
 # Required; e.g. make install HOST=foo TARGET=root@10.0.0.5
 TARGET ?=
 
 # Declare targets with no matching file.
-.PHONY: switch boot test build install fmt update check secrets
+.PHONY: switch boot test build deploy deploy-boot install fmt update check secrets
 
 # Rebuild the system and switch to the new configuration (require sudo).
 switch:
@@ -33,6 +37,17 @@ test:
 # Build the configuration without activating it.
 build:
 	nixos-rebuild build --flake $(FLAKE)#$(HOST)
+
+# Rebuild and activate on a remote host over SSH. The flake is evaluated and
+# built locally, then the closure is copied to DEPLOY (no repo needed there).
+deploy:
+	nixos-rebuild switch --flake $(FLAKE)#$(HOST) \
+		--target-host $(DEPLOY) --ask-sudo-password
+
+# Stage the next boot configuration on a remote host without activating it.
+deploy-boot:
+	nixos-rebuild boot --flake $(FLAKE)#$(HOST) \
+		--target-host $(DEPLOY) --ask-sudo-password
 
 # Install NixOS on a fresh machine via nixos-anywhere (wipes its disk).
 # Requires SSH access and passwordless sudo (or root) on the target.

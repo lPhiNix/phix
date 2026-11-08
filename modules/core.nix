@@ -74,6 +74,17 @@
   # Manage networking via NetworkManager.
   networking.networkmanager.enable = true;
 
+  # Publish and resolve LAN hostnames via mDNS.
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      userServices = false;
+    };
+  };
+
   # Allow non-redistributable firmware blobs.
   hardware.enableRedistributableFirmware = true;
 
