@@ -25,9 +25,6 @@ in {
   home.packages = with pkgs; [
     # adb, fastboot, sdkmanager and avdmanager on PATH.
     androidSdk.androidsdk
-
-    # Mirror and control the device from the desktop (no Android Studio needed).
-    scrcpy
   ];
 
   home.sessionVariables = {

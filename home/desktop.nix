@@ -21,7 +21,6 @@
     pkgs.unstablePkgs.vscode # Code editor (GUI IDE)
     obsidian # Markdown vault
     filen-desktop # Filen cloud desktop app (encrypted drive)
-    obs-studio # Screen recording and streaming
     gimp # Image editing (raster/photo)
     inkscape # Vector illustration / SVG
     kdePackages.kdenlive # Video editing (MP4/H.264/AAC, NVENC)

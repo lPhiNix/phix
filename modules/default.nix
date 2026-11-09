@@ -24,6 +24,7 @@
     ./gaming.nix
     ./virtualisation.nix
     ./power.nix
+    ./recording.nix
     ./shell.nix
     ./users.nix
     ./services

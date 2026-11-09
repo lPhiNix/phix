@@ -22,6 +22,8 @@
     ./node.nix
     ./android.nix
     ./caelestia.nix
+    ./obs.nix
+    ./scrcpy.nix
     ./sops.nix
   ];
 }

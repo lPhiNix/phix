@@ -21,5 +21,6 @@
     modules.secure.enable = lib.mkDefault true;
     modules.secrets.enable = lib.mkDefault true;
     modules.home.enable = lib.mkDefault true;
+    modules.recording.enable = lib.mkDefault true;
   };
 }
