@@ -23,25 +23,25 @@
     "--audio-dup"
   ];
 
-  phone-mirror = pkgs.writeShellScriptBin "phone-mirror" ''
+  scrcpy-mirror = pkgs.writeShellScriptBin "scrcpy-mirror" ''
     exec ${pkgs.scrcpy}/bin/scrcpy ${lib.escapeShellArgs flags} "$@"
   '';
 
-  phone-obs = pkgs.writeShellScriptBin "phone-obs" ''
+  scrcpy-obs = pkgs.writeShellScriptBin "scrcpy-obs" ''
     exec ${pkgs.scrcpy}/bin/scrcpy ${lib.escapeShellArgs flags} \
       --v4l2-sink=/dev/video10 --no-video-playback "$@"
   '';
 
-  phone-record = pkgs.writeShellScriptBin "phone-record" ''
+  scrcpy-record = pkgs.writeShellScriptBin "scrcpy-record" ''
     mkdir -p "$HOME/Videos"
     exec ${pkgs.scrcpy}/bin/scrcpy ${lib.escapeShellArgs flags} \
-      --record="$HOME/Videos/phone-$(date +%Y%m%d-%H%M%S).mkv" "$@"
+      --record="$HOME/Videos/scrcpy-$(date +%Y%m%d-%H%M%S).mkv" "$@"
   '';
 in {
   home.packages = [
     pkgs.scrcpy
-    phone-mirror
-    phone-obs
-    phone-record
+    scrcpy-mirror
+    scrcpy-obs
+    scrcpy-record
   ];
 }
