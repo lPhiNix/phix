@@ -18,5 +18,15 @@
         exec ${pkgs.obs-studio}/bin/obs "$@"
       '')
     ];
+    xdg.desktopEntries."com.obsproject.Studio" = {
+      name = "OBS Studio";
+      genericName = "Streaming/Recording Software";
+      comment = "Free and Open Source Streaming/Recording Software";
+      exec = "obs %U";
+      icon = "${pkgs.obs-studio}/share/icons/hicolor/256x256/apps/com.obsproject.Studio.png";
+      terminal = false;
+      categories = ["AudioVideo" "Recorder"];
+      startupNotify = true;
+    };
   };
 }
