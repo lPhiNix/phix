@@ -91,11 +91,11 @@
     },
     "dotfiles": {
       "locked": {
-        "lastModified": 1793123928,
-        "narHash": "sha256-C6NdfSQw6P3NIz0oGydbg9WA+nAz/19VdoqFti8jzSE=",
+        "lastModified": 1794253229,
+        "narHash": "sha256-tFmLNMqIw5BF2GHwstktdDrKQ3rP4qYmYBNuSJBh8bc=",
         "owner": "lPhiNix",
         "repo": "dotfiles",
-        "rev": "53e1f5a62581880967090dadb2cf6c8149bbe43e",
+        "rev": "754762202ba088532f8a31b95edbaf1d630cf0c5",
         "type": "github"
       },
       "original": {
