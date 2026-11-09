@@ -25,7 +25,6 @@
 
     # video_nr=10 avoids clashing with webcams/IR cameras on laptops.
     # exclusive_caps=1 makes OBS/Chromium see it as a capture device.
-    boot.extraModprobeConfig =
-      "options v4l2loopback video_nr=10 card_label=scrcpy exclusive_caps=1";
+    boot.extraModprobeConfig = "options v4l2loopback video_nr=10 card_label=scrcpy exclusive_caps=1";
   };
 }
