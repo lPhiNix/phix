@@ -14,6 +14,6 @@
     pkg-config # Helper for compiler/linker flags
     gdb # C/C++ debugger
     clang-tools # clangd: C/C++ language server
-    pkgs.unstablePkgs.neocmakelsp # CMake language server
+    neocmakelsp # CMake language server
   ];
 }
