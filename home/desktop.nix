@@ -18,7 +18,6 @@
     nautilus # File manager
     brave # Web browser
     pkgs.unstablePkgs.tor-browser # Tor Browser (anonymity)
-    pkgs.unstablePkgs.vscode # Code editor (GUI IDE)
     obsidian # Markdown vault
     filen-desktop # Filen cloud desktop app (encrypted drive)
     gimp # Image editing (raster/photo)

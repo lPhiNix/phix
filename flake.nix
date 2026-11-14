@@ -43,6 +43,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Caelestia dotfiles repository.
+    caelestia-dots = {
+      url = "github:caelestia-dots/caelestia";
+      flake = false;
+    };
+
+    # VS Code Marketplace / Open VSX extension set for VSCodium.
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal dotfiles, consumed as a flake that provides a Home Manager
     # module (homeManagerModules.default) deploying every dotfile.
     dotfiles = {

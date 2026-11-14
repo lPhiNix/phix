@@ -21,6 +21,7 @@
     ./kotlin.nix
     ./node.nix
     ./android.nix
+    ./vsc.nix
     ./caelestia.nix
     ./obs.nix
     ./scrcpy.nix
